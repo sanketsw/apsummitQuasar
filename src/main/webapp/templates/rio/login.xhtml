@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="form">
+		<div class="Container100" id="loginbodyblue">
+
+
+			<div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+				<div class="Wid50 MarAuto WidAutoOnMobile">
+					<!--     <h:graphicImage name="images/logo.svg" library="rio-layout" style="width:40%; max-width:200px;"/> -->
+					<div class="EmptyBox30" />
+					<div class="Card ShadowEffect">
+						<div class="EmptyBox20" />
+						<div class="Wid100 OvHidden BigTopic Fs30">
+							<i class="icon-users Fs40"></i>Login
+						</div>
+						<div class="EmptyBox20" />
+						<div class="Wid100">
+							<p:inputText id="loginPanelUser" placeholder="username"
+								styleClass="Wid80 TexAlCenter Fs18"
+								value="#{loginForm.userName}" />
+						</div>
+						<div class="EmptyBox10" />
+						<div class="Wid100">
+							<p:inputText id="loginPanelPassword" type="password" placeholder="password"
+								styleClass="Wid80 TexAlCenter Fs18"
+								value="#{loginForm.password}" />
+						</div>
+						<div class="EmptyBox30" />
+						<p:selectBooleanCheckbox value="accept"
+							itemLabel="I Accept Terms And Policies" />
+						<div class="EmptyBox30" />
+						<div class="Wid100">
+							<!-- 					<p:button value="Sign In" icon="fa fa-sign-in" styleClass="Wid60 Fs18 White RaisedButton" /> -->
+							<p:commandButton id="loginPanelSignInButton" value="Sign In" icon="fa fa-sign-in"
+								styleClass="Wid60 Fs18 White RaisedButton" update="growl"
+								action="#{loginForm.login}" />
+						</div>
+						<div class="EmptyBox5" />
+						<div class="Wid100">
+							<p:button value="Forgot Password ?" icon="fa fa-lock"
+								styleClass="RedButton Wid60 Fs18 White RaisedButton" />
+						</div>
+						<div class="EmptyBox20" />
+						<div class="Separator" />
+						<div class="EmptyBox10" />
+						<div class="Wid100">
+							<p:commandButton value="Access Request ?"
+								action="#{appUserForm.viewNewOne()}" ajax="true"
+								update="mainContent, form, growl" process="@this"
+								icon="fa fa-key"
+								styleClass="GreenButton Wid60 Fs18 White RaisedButton" />
+						</div>
+						<div class="EmptyBox20" />
+					</div>
+					<div
+						class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular WhiteBlue">
+						<i class="fa fa-copyright"></i> IBM - GBS (Emerging Technologies)
+						<br /> All rights reserved.
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</h:form>
+
+</ui:composition>

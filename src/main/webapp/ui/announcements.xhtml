@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<h2 class="BigTopic PageTilte">Announcements</h2>
+	<div class="ContainerIndent">
+		<div class="Card ShadowEffect TexAlLeft Fs14">
+			<p:dataScroller id="messages" var="m"
+				value="#{announcementBean.messages}" mode="inline" chunkSize="5">
+					<h:outputText class="FontBold Fs18" value="#{m.message}" />
+					<h:outputText class="ActivityFeedText" value=" - #{m.formattedDate}" />
+					<div class="EmptyBox10"></div>
+			</p:dataScroller>			
+		</div>
+	</div>
+
+
+</ui:composition>

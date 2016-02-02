@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Telstra Supplier Information</title>
+        
+        <h:outputScript name="js/ripple-effect.js" library="adamantium-layout" />
+        <h:outputScript name="js/perfect-scrollbar.js" library="adamantium-layout" />
+        <h:outputScript name="js/layout.js" library="adamantium-layout" />
+
+        <ui:insert name="head" />
+        
+        <script type="text/javascript">
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.title = '';
+                this.cfg.seriesColors = ['#FF4081', '#FB8C00', '#43A047', '#8E24AA'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#ffffff',
+                    gridLineColor: '#F5F5F5',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#666F77'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    lineWidth:1,
+                    markerOptions: {
+                        shadow: false,
+                        size:7,
+                        style:'circle'
+                    }
+                }
+            }
+
+            function skinPie() {
+                this.cfg.seriesColors = ['#FF4081', '#FB8C00', '#43A047', '#8E24AA'];
+                this.cfg.seriesColors = [ 'rgba(124,181,236,.85)', 'rgba(241,92,128,.85)',
+                              			'rgba(67,67,72,.85)', 'rgba(144,237,125,.85)',
+                            			'rgba(247,163,92,.85)', 'rgba(128,133,233,.85)',
+                            			'rgba(228,211,84,.85)', 'rgba(43,144,143,.85)',
+                            			'rgba(244,91,91,.85)', 'rgba(145,232,225,.85)' ];
+                this.cfg.grid = {
+                    background: '#f5f5f5',
+                    borderColor: '#eaeaea',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false,
+                    borderWidth: 0
+                };
+                this.cfg.seriesDefaults.shadow = false;
+            }            
+        </script>
+        
+        <style type="text/css">
+            .jqplot-target, .jqplot-axis {
+                color: #546E7A;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        
+        <ui:include src="topbar.xhtml" />
+        
+        <ui:include src="layoutmenu.xhtml" />
+
+        <div id="layout-portlets-cover">
+			<h:panelGroup layout="block" id="mainContent">
+			 
+				<ui:insert name="content">
+					<ui:include src="#{sessionModel.content}" />
+				</ui:insert>
+            
+			</h:panelGroup>
+            <div class="Container100 TexAlCenter Gray FontAdamantiumRegular">
+                <div class="EmptyBox30"></div>
+                PrimeFaces Adamantium Theme And Layout | All rights reserved.
+            </div>
+
+        </div>
+        
+        <p:growl id="growl" showDetail="true" autoUpdate="true" closable="true"
+		life="5000" />
+
+        <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+            <f:facet name="start">
+                <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:outputStylesheet name="css/core-layout.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/animate.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/adamantium-font.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/perfect-scrollbar.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/adamantium-layout.css" library="adamantium-layout" />
+    </h:body>
+
+</html>

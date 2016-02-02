@@ -1,0 +1,21 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/adamantium">
+
+    <div class="layout-menu-cover-top Animated05" id="layout-menu-cover">
+        <h:form id="menuform">
+            <pm:menu>
+	        	<p:menuitem id="rm_dashboard" value="Dashboard" icon="fa fa-dashboard" ajax="true" action="#{navigationBean.dashboard}" update="mainContent,form"/>
+	        	<p:menuitem id="rm_invoices" value="Invoices" icon="fa fa-list-alt" action="#{invoiceForm.viewList}" ajax="true"  update="mainContent,form"/>
+	        	<p:menuitem id="rm_supplier" value="Supplier Information" icon="fa fa-user" action="#{supplierForm.viewList}" ajax="true"  update="mainContent,form"/>
+	        	<p:menuitem id="rm_help" value="Help" icon="fa fa-info-circle" action="#{helpForm.viewList}" ajax="true"  update="mainContent,form"/>
+            </pm:menu>
+        </h:form>
+
+    </div>
+
+</ui:composition>

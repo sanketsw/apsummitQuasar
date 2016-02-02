@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/rio/template.xhtml">
+
+
+
+	<ui:define name="content">
+		<h:form id="form">
+
+			<div class="Container70 Responsive100">
+				<div class="BackPanel TexAlRight Fright">					
+					<div class="EmptyBox10"></div>
+					<p:commandButton icon="fa fa-chevron-left" value="Back to Schedule" styleClass="RaisedButton GrayButton Rounded" style="margin-right:5px;" action="#{navigationBean.showDashboard}" />
+				</div>		
+				<h2 class="BigTopic PageTilte">Announcements</h2>
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect TexAlLeft Fs14">
+						<h2 class="CardTopic">Post new announcement</h2>
+						<div class="EmptyBox10"></div>
+						<p:inputText styleClass="Wid90" id="messageInput"
+								value="#{messageBean.currentMessage}"
+								placeholder="Enter your text here"></p:inputText>
+						<div class="EmptyBox10"></div>
+						<p:commandButton value="POST" icon="fa fa-send"
+								styleClass="RaisedButton Rounded"
+								action="#{messageBean.saveMessage}" update="form" />
+							<div class="EmptyBox10"></div>
+						<div class="EmptyBox10"></div>
+						<p:dataScroller id="messages" var="m"
+							value="#{messageBean.messages}" mode="inline" chunkSize="5">
+							<h:outputText class="FontBold Fs18" value="#{m.message}" />
+							<h:outputText class="ActivityFeedText" value=" - #{m.formattedDate}" />
+							<p:commandLink styleClass="Fright"
+								style="height:1em; width:1em; min-width:1em!important;"
+								action="#{messageBean.removeMessage(m)}"
+								update="messages">
+								<i class="fa fa-remove Red"></i>
+							</p:commandLink>
+							<div class="EmptyBox10"></div>
+						</p:dataScroller>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

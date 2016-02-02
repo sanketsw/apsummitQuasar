@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Viral Assay Management System</title>
+
+	<h:outputScript name="js/ripple-effect.js" library="rio-layout" />
+	<h:outputScript name="js/perfect-scrollbar.js" library="rio-layout" />
+	<h:outputScript name="js/layout.js" library="rio-layout" />
+	
+	    <h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
+        <h:outputStylesheet name="css/animate.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
+	
+	<h:outputScript name="charts/charts.js" library="primefaces" />
+	<h:outputStylesheet name="charts/charts.css" library="primefaces" />
+	
+	<h:outputStylesheet name="css/customui.css" library="custom" />
+
+	<ui:insert name="head" />
+	
+	<style>
+	.ui-datatable-tablewrapper {margin: 0px;}
+	
+	.ui-datatable {border-width: 0px}
+
+	#preloader6{
+	    position:relative;
+	    width: 42px;
+	    height: 42px;
+	    animation: preloader_6 1s infinite linear;
+	}
+	
+	#preloader6 span{
+	    width:20px;
+	    height:20px;
+	    position:absolute;
+	    background:red;
+	    display:block;
+	    animation: preloader_6_span 1s infinite linear;
+	}
+	
+	#preloader6 span:nth-child(1){
+	background:#82b1ff;	 
+	}
+	
+	#preloader6 span:nth-child(2){
+	left:22px;
+	background:#448aff;
+	    animation-delay: .2s;	 
+	}
+	
+	#preloader6 span:nth-child(3){
+	top:22px;
+	background:#2979ff;
+	    animation-delay: .4s;
+	}
+	
+	#preloader6 span:nth-child(4){
+	top:22px;
+	left:22px;
+	background:#2962ff;
+	    animation-delay: .6s;
+	}
+	
+	@keyframes preloader_6 {
+	   0% { transform:rotate(0deg); }
+	   50% { transform:rotate(180deg); }
+	   100% { transform:rotate(360deg); }
+	}
+
+	@keyframes preloader_6_span {
+	   0% { transform:scale(1); }
+	   50% { transform:scale(0.5);}
+	   100% { transform:scale(1);}
+	}
+	</style>
+	
+	<script type="text/javascript">
+	/**
+	This function hides the menu mobile after a menu item is selected in mobile mode.
+	*/
+	function closeMobileMenu() {
+		var button = document.getElementById("mobile-menu-button");
+		button.click();
+	}
+
+	colors = [ 'rgba(124,181,236,.85)', 'rgba(241,92,128,.85)',
+			'rgba(67,67,72,.85)', 'rgba(144,237,125,.85)',
+			'rgba(247,163,92,.85)', 'rgba(128,133,233,.85)',
+			'rgba(228,211,84,.85)', 'rgba(43,144,143,.85)',
+			'rgba(244,91,91,.85)', 'rgba(145,232,225,.85)' ];
+
+	colors = shuffle(colors);
+
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
+
+	function configureBarChart() {
+
+		this.cfg.grid = {
+                  background: '#ffffff',
+                  borderColor: '#ffffff',
+                  gridLineColor: '#E8E8E8',
+                  shadow: false,
+			drawBorder : false,
+			//drawGridlines: false,
+			shadow : false,
+		}
+
+		this.cfg.legend = {
+			show : true,
+			location : 'nw'
+		}
+
+              this.cfg.axesDefaults = {
+                  rendererOptions: {
+                      textColor: '#778D9B'
+                  }
+              };
+
+		this.cfg.seriesColors = colors;
+		//this.cfg.seriesColors = colors.reverse();
+
+		this.cfg.seriesDefaults = {
+                  shadow: false,
+                  markerOptions: {
+                      shadow: false
+                  },
+			rendererOptions : {
+				fillAlpha : 0.5,
+				fill : true,
+				fillAndStroke : true,
+				shadow : false,
+				barWidth : 10
+			}
+		}
+	}
+
+	</script>
+	
+</h:head>
+
+<h:body>
+
+	<ui:include src="topbar.xhtml" />
+
+    <p:growl id="growl" showDetail="true" autoUpdate="true" closable="true" life="3000"/>
+	
+	<div id="wrapper">
+		<div id="wrapperIndent">
+
+			<ui:include src="layoutmenu.xhtml" />
+
+			<div id="layout-portlets-cover">
+				<h:panelGroup layout="block" id="mainContent">
+					<ui:insert name="content">
+						<ui:include src="#{sessionModel.content}" />
+					</ui:insert>
+				</h:panelGroup>
+
+				<div class="Container100">
+					<div class="ContainerIndent Fs12 BoldGray FontRobotoRegular">
+						<div class="EmptyBox10"></div>
+						<i class="icon-mountains14 Fs16 Fleft"></i> IBM Global Business Services | All rights reserved. Stage: #{facesContext.application.projectStage}
+						<div class="EmptyBox10"></div>
+					</div>
+				</div>
+			</div>
+<!-- 			<div style="width:32px;height:32px;position:fixed;right:7px;bottom:7px;border-radius:50px;background-color:red"></div> -->
+
+			<p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px" styleClass="ContainerIndent">
+				<f:facet name="start">
+					<div id="preloader6">
+			           <span/>
+			           <span/>
+			           <span/>
+			           <span/>
+					</div>
+       				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+		</div>
+	</div>
+
+        <h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
+        <h:outputStylesheet name="css/animate.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
+        <h:outputStylesheet name="css/perfect-scrollbar.css" library="rio-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
+        
+    </h:body>
+
+</html>

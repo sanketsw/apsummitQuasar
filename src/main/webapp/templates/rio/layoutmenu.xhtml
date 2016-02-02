@@ -1,0 +1,51 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/rio">
+
+    <div class="Animated05" id="layout-menu-cover">
+<h:panelGroup layout="block" id="sideContent">
+        <ul class="layout-menu">
+            <li>
+            	<ui:fragment rendered="#{! loginForm.validateLoggedIn()}">
+	            	<p:commandLink id="loginLink" styleClass="menulink ripplelink BoldGray" action="#{navigationBean.login}" ajax="true" update="mainContent,form,sideContent" onsuccess="closeMobileMenu();">
+	                    <i class="icon-round58 Fs40"></i>
+	                    <span class="Fs18">Welcome, Guest<i class="icon-downwards Fright Fs20"></i><br /><span class="Fs12 FontRobotoLight">Click to Login</span></span>
+	                </p:commandLink>
+            	</ui:fragment>
+            	<ui:fragment rendered="#{loginForm.validateLoggedIn()}">
+	                <a id="loggedinLink" class="menulink ripplelink">
+	                    <i class="icon-round58 Fs40"></i>
+	                    <span class="Fs18">#{loginForm.loggedUser}<i class="icon-downwards Fright Fs20"></i><br /><span class="Fs12 FontRobotoLight">#{loginForm.loggedRole}</span></span>
+	                </a>
+	                <ul>
+	                    <li><a href="#" class="menulink ripplelink"><i class="icon-two385 Fs16"></i> Change User</a></li>
+	                    <li><a href="#" class="menulink ripplelink"><i class="icon-settings49 Fs16"></i> System Settings</a></li>
+	                    <li><h:form><p:commandLink styleClass="menulink ripplelink BoldGray" ajax="true" update="mainContent,form,sideContent" onsuccess="closeMobileMenu();" action="#{loginForm.logout}"><i class="icon-thermostat1 Fs16 BoldGray" style="vertical-align:middle;"></i> 
+	                    		<h:outputText value=" Logout" styleClass="Fs14 BoldGray" style="vertical-align:middle;"/></p:commandLink></h:form></li>
+	                </ul>
+                </ui:fragment>
+            </li>
+        </ul>
+        <div class="Separator"></div>
+
+		<h:form>
+        <pr:menu id="mainMenu">
+
+            <p:menuitem id="rm_home" value="Home" icon="fa fa-home" action="#{navigationBean.home}" ajax="true" update="mainContent,form"  onsuccess="closeMobileMenu();"/>
+            <p:separator/>
+            <p:menuitem id="rm_dashboard" value="Dashboard" icon="fa fa-dashboard" action="#{navigationBean.dashboard}" ajax="true" update="mainContent"  onsuccess="closeMobileMenu();"/>
+            <p:separator/>
+            <p:submenu id="rm_admin" label="Admin" icon="icon-mountains14" rendered="#{loginForm.validateAdmin()}">
+                <p:menuitem id="rm_users" value="Users" icon="fa  fa-users" action="#{appUserForm.viewList}" ajax="true" update="mainContent,form" onsuccess="closeMobileMenu();" rendered="#{loginForm.validateAdmin()}"/>
+              
+            </p:submenu>
+        </pr:menu>
+        </h:form>
+</h:panelGroup>
+    </div>
+
+</ui:composition>

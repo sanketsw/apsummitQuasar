@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/rio/template.xhtml">
+
+
+
+	<ui:define name="content">
+		<h:form id="form">
+
+			<h2 class="BigTopic PageTilte">Channel</h2>
+
+			<p:accordionPanel styleClass="Day ShadowEffect" multiple="true"
+				activeIndex="0,1,2,3">
+
+				<p:tab>
+					<f:facet name="title">
+						<h:outputText value="Negotiation and Deal Closing Masterclass" class="Fs22"/>
+						<br/><h:outputText value="Greg Morris" style="font-weight:normal;"/>
+					</f:facet>
+
+					<p:accordionPanel styleClass="Schedule" activeIndex="null">
+						<p:tab>
+							<f:facet name="title">
+								<div class="EmptyBox5"></div>
+								<div class="Container30 Responsive40 Time">
+									<h:outputText value="" />
+								</div>
+								<div class="Container60 Responsive40 Session">
+									<h:outputText value="Introduction" class="FS16 FontBold" />
+								</div>
+								<div class="EmptyBox5"></div>
+							</f:facet>
+							<p:panel style="border:none;">
+								<h:outputText class="FontBold"
+									value="Presentation and discussion" />
+								<div class="EmptyBox5"></div>
+								<h:outputText class="FontBold"
+									value="Presenter: IMT leader/ Greg Morris and CMA" />
+								<div class="EmptyBox5"></div>
+								<h:outputText
+									value="IMT provides the context for the workshop 
+CMA introduces the purpose and agenda for the workshop
+CMA collates a list of the participants’ most common negotiation and deal closing challenges" />
+								<div class="EmptyBox5"></div>
+								<h:outputText
+									value="Role of Exec Sponsor/Sector Leads/Service Line Leads:" />
+								<h:outputText
+									value="Support debrief , lessons learned "/>
+							</p:panel>
+							
+						</p:tab>
+						<p:tab>
+							<f:facet name="title">
+								<div class="EmptyBox5"></div>
+								<div class="Container30 Responsive40 Time">
+									<h:outputText value="7.00pm" />
+								</div>
+								<div class="Container60 Responsive40 Session">
+									<h:outputText value="Networking, Finger Food/Dinner "
+										class="FS16 FontBold" />
+								</div>
+								<div class="EmptyBox5"></div>
+							</f:facet>
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText
+									value="The material environment is a 3D space, which means all objects have x, y, and z dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the positive z-axis extending towards the viewer. Every sheet of material occupies a single position along the z-axis and has a standard 1dp thickness.
+                                                          On the web, the z-axis is used for layering and not for perspective. The 3D world is emulated by manipulating the y-axis." />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab>
+							<f:facet name="title">
+
+								<div class="EmptyBox5"></div>
+								<div class="Container30 Responsive40 Time">
+									<h:outputText value="7.30pm" />
+								</div>
+								<div class="Container60 Responsive40 Session">
+									<h:outputText value="Learning Content Launch"
+										class="FS16 FontBold" />
+								</div>
+								<div class="EmptyBox5"></div>
+							</f:facet>
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText
+									value="Presenter: Nick Oulton Content owners: Michael and Nick Modelling the perfect value prop" />
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+
+
+				</p:tab>
+
+
+
+			</p:accordionPanel>
+
+			<div class="Container100">
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect TexAlCenter PageText Fs12">
+						<div class="EmptyBox5"></div>
+						<p:commandButton icon="fa fa-chevron-left" styleClass="Fleft"
+							style="margin-left:10px;" action="channel.xhtml" />
+						<p:commandButton icon="fa fa-calendar" action="dashboard.xhtml" />
+						<p:commandButton icon="fa fa-chevron-right"
+							styleClass="Fright MarRight10" action="channel.xhtml" />
+						<div class="EmptyBox5"></div>
+						<h:outputText class="Fleft" style="margin-left:10px;"
+							value="Prev Channel" />
+						<h:outputText value="Back to Program" />
+						<h:outputText class="Fright MarRight10" value="Next Channel" />
+						<div class="EmptyBox5"></div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

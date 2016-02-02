@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>APSummit</title>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body styleClass="loginbodyblue">
+        <p:growl id="growl" showDetail="true" autoUpdate="true" closable="true" life="3000"/>
+        <h:form id="form">
+        <div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+            <div class="Wid33 MarAuto WidAutoOnMobile">
+                <h:graphicImage name="images/IBMGBS.png" library="custom" style="width:100%;"/>
+                <div class="EmptyBox30"></div>
+                <div class="Wid100"><h:graphicImage name="images/AP2016logo.png" styleClass="logo-custom" style="width:100%; margin-bottom:-5px; border-radius: 10px 10px 0px 0px; -moz-border-radius: 10px 10px 0px 0px; -webkit-border-radius: 10px 10px 0px 0px;" library="custom"/></div>
+                <div class="Card ShadowEffect" style="border-radius: 0px 0px 10px 10px; -moz-border-radius: 0px 0px 10px 10px; -webkit-border-radius: 0px 0px 10px 10px;">
+                
+                    <div class="EmptyBox20"></div>
+                    <div class="EmptyBox20"></div>
+                    <div class="Wid100"><p:inputText id="YourName"  value="#{loginForm.userName}" placeholder="Enter your Name here" required="true" requiredMessage="Name required" styleClass="Wid80 TexAlCenter Fs18" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;">
+                    <p:ajax event="change" listener="#{loginForm.checkEmail()}" update="IBMEmail" />
+                    </p:inputText></div>
+                    <div class="EmptyBox10"></div>
+                    <div class="Wid100"><p:inputText id="IBMEmail" value="#{loginForm.email}"  placeholder="IBM Email" required="true" requiredMessage="Email required" styleClass="Wid80 TexAlCenter Fs18" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;"/></div>
+                    <div class="EmptyBox10"></div>
+                    <div class="Wid100"><p:inputText type="password" value="#{loginForm.password}" placeholder="Enter PIN" styleClass="Wid80 TexAlCenter Fs18" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;"/></div>
+                    <div class="EmptyBox30"></div>
+                    <div class="Wid100"><p:commandButton value="Sign In" icon="fa fa-sign-in" styleClass="Wid60 Fs18 White RaisedButton" action="#{loginForm.login}" update="form, growl" style="border-radius: 10px!important; -moz-border-radius: 10px!important; -webkit-border-radius: 10px!important;"/></div>
+                    <div class="EmptyBox5"></div>
+                </div>
+                <div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular WhiteBlue">
+                        <i class="fa fa-copyright"></i>  IBM Global Business Services <br/> All rights reserved.
+                    </div>
+            </div>
+        </div>
+        </h:form>
+        
+        <h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
+        <h:outputStylesheet name="css/animate.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
+    </h:body>
+
+</html>

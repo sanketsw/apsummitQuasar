@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/rio/template.xhtml">
+
+
+
+	<ui:define name="content">
+		<h:form id="form">
+
+			<div class="Container70 Responsive100">
+				<div class="BackPanel TexAlRight Fright">
+					<div class="EmptyBox10"></div>
+					<p:commandButton icon="fa fa-chevron-left" value="Back to Schedule"
+						styleClass="RaisedButton GrayButton Rounded"
+						style="margin-right:5px;" action="#{navigationBean.showDashboard}" />
+				</div>
+				<h2 class="BigTopic PageTilte">Schedule</h2>
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect TexAlLeft Fs14">
+
+						<div class="EmptyBox10"></div>
+						<h2 class="CardTopic">1. Download current schedule</h2>
+						<div style="padding: 0.2em 0.4em;">
+							<p:commandButton value="Download" icon="fa fa-download"
+								styleClass="RaisedButton Rounded" ajax="false"
+								action="#{scheduleBean.download()}" update="form" />
+						</div>
+						<div class="EmptyBox20"></div>
+						<h2 class="CardTopic">2. Modify and upload back</h2>
+						<p:fileUpload fileUploadListener="#{scheduleBean.upload}"
+							mode="advanced" dragDropSupport="false" multiple="false"
+							update="form, growl" process="@this" />
+						<h2 class="CardTopic">3. Review the dashboard and then commit
+							the schedule to save</h2>
+						<div style="padding: 0.2em 0.4em;">
+							<p:commandButton value="Commit" icon="fa fa-save"
+								styleClass="RaisedButton Rounded"
+								action="#{scheduleBean.save()}" update="form, growl" />
+							<p:commandButton value="Revert to last version" icon="fa fa-undo"
+								styleClass="RaisedButton GrayButton Rounded"
+								action="#{scheduleBean.revert()}" update="form, growl" />
+						</div>
+						<h2 class="CardTopic">Done.</h2>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

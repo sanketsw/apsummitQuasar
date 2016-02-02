@@ -1,0 +1,139 @@
+.borderlessGrid {
+	border: none;
+}
+
+.borderlessGrid.ui-panelgrid>tbody>tr, .borderlessGrid.ui-panelgrid>tbody>tr>td {
+    border: none !important;
+}
+
+.Card {
+	border-radius: 10px;
+}
+
+
+.ui-accordion {
+	border-radius: 10px;
+	margin: 5px!important;
+}
+.ui-accordion .ui-accordion-header {
+	border-radius: 10px;
+}
+
+.ui-panel .ui-panel-titlebar {
+	border-top-left-radius: 10px!important;
+    border-top-right-radius: 10px!important;
+    background-color:#e0e0e0;
+    color: #546E7A;
+}
+.ui-panel .ui-panel-footer {
+	border-bottom-right-radius: 10px!important;
+    border-bottom-left-radius: 10px!important;
+}
+.ui-panel {
+	border-radius: 10px!important;
+	margin: 5px!important;
+}
+.ui-datascroller .ui-datascroller-item {
+	border: none!important;
+}
+.ui-datascroller {
+	border: none;
+	border-radius: 10px;	
+}
+
+.Rounded {
+	border-radius: 5px!important;
+}
+
+.Day.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: bold !important;
+	background-color:transparent;
+}
+
+.Schedule.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: normal !important;
+	background-color:#e0e0e0;
+	margin: 2px!important;
+}
+.Schedule.ui-accordion {
+	border: none !important;
+}
+
+.Comments.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: bold !important;
+	background-color:#e0e0e0;
+}
+
+.Channel1 {
+	color: #ffffff !important;
+	background-color:#454a4f !important;
+}
+.Channel2 {
+	color: #ffffff !important;
+	background-color:#d39a9a !important;
+}
+.Channel3 {
+	color: #ffffff !important;
+	background-color:#6fbaab !important;
+}
+
+.Time {
+	position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    margin-right: 5px
+}
+
+.Session {
+	margin-left: 30%;
+}
+
+.PageTilte {
+	font-family: 'roboto_condensedregular';
+    color: #546E7A;
+	padding: 10px !important;
+}
+
+.PageText {
+	font-family: 'roboto_condensedregular';
+    color: #546E7A;
+}
+
+.ActivityFeedText {
+	color: #d39a9a;
+}
+
+.Margin10 {
+	margin: 10px!important;
+}
+.Margin5 {
+	margin: 5px!important;
+}
+
+.preformatted {
+    white-space: pre-wrap;
+}
+
+.MessagePanel.ui-panel .ui-panel-titlebar {
+	padding: 2px 20px !important;
+}
+.MessagePanel.ui-panel .ui-panel-titlebar {
+    background-color: #d39a9a;
+    color: #ffffff;
+}
+
+.logo-custom{
+	height:100%;
+}
+
+/*Overridden Primefaces Classes*/
+#layout-topbar{
+    background: #C7C7C7; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FEFEFE, #C7C7C7); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FEFEFE, #C7C7C7); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FEFEFE, #C7C7C7); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FEFEFE, #C7C7C7); /* Standard syntax */
+}

@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<h2 class="BigTopic PageTilte">Activity Feed</h2>
+	<div class="ContainerIndent">
+		<div class="Card ShadowEffect TexAlLeft Fs14">
+			<p:dataScroller id="activity" var="m"
+				value="#{announcementBean.activity}" mode="inline" chunkSize="5">
+					<h:outputText id="userId" style="color:#0288D1;" class="ActivityFeedText" value="#{m.userId}" />
+					<p:overlayPanel id="presenterPanel" for="userId" hideEffect="fade">
+						#{messageBean.getEmail(m.userId)}<br/><br/>
+						<a href="http://faces.tap.ibm.com/bluepages/profile.html?email=#{messageBean.getEmail(m.userId)}" style="color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Bluepages Profile</a>
+					</p:overlayPanel>
+					<h:outputText class="ActivityFeedText"  value=" wrote " rendered="#{m.type != 'Question'}" />
+					<h:outputText class="ActivityFeedText" value=" asked a question " rendered="#{m.type == 'Question'}" />
+					<h:outputText class="ActivityFeedText" value=" #{m.formattedDate}: &lt;br/&gt;" escape="false"  />
+					<h:outputText class="ActivityFeedText" value="in session: " />
+					<p:commandLink value="#{announcementBean.getEntityName(m.entityId)}" action="#{navigationBean.showSession(m.entityId)}"/>
+					<br/>
+					<h:outputText class="FontBold Fs18" value="#{m.message}" />	
+					<p:commandLink styleClass="Fright" rendered="#{loginForm.validateAdmin()}"
+									style="height:1em; width:1em; min-width:1em!important;"
+									action="#{announcementBean.removeMessage(m)}" update="activity">
+									<i class="fa fa-remove Red"></i>
+					</p:commandLink>				
+					<div class="EmptyBox10"></div>
+			</p:dataScroller>			
+		</div>
+	</div>
+
+
+</ui:composition>

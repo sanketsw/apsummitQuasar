@@ -1,0 +1,128 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/rio/template.xhtml">
+
+
+	<ui:define name="content">
+		<h:form id="form">
+
+			<div class="Container70 Responsive100">
+				<h2 class="BigTopic PageTilte Fleft">Program</h2>
+				<p:selectOneMenu styleClass="Margin10" id="country"
+					value="#{scheduleBean.country}" style="width:110px; float:left;">
+					<p:ajax listener="#{scheduleBean.onCountryChange}" update="form" />
+					<f:selectItem itemLabel="Select team colour" itemValue=""
+						noSelectionOption="true" style="border-radius:10px"/>
+					<f:selectItems value="#{scheduleBean.countries}" style="border-radius:10px"/>
+				</p:selectOneMenu>
+				<div class="EmptyBox5" style="height:1px;"></div>
+				<h:outputText class="PageText Margin10 Fs16" style="color:red;"
+					value="Select your team to view relevant schdule."
+					rendered="#{scheduleBean.getCountry()==null}" />				
+				<div class="EmptyBox5"></div>
+				<p:accordionPanel styleClass="Day ShadowEffect" multiple="false"
+					id="DayTabs" value="#{scheduleBean.days}" var="day" dynamic="true"
+					activeIndex="#{sessionBean.daysActiveIndex}">
+					<p:ajax event="tabChange" listener="#{sessionBean.onDaysTabChange}"
+						update="DayTabs" />
+					<p:tab>
+						<f:facet name="title">
+							<h:outputText value="Day #{day.id}" class="Fs18" />
+						</f:facet>
+						<p:dataGrid columns="1" layout="grid" style="border:0px;"
+							styleClass="Schedule" id="SessionTabs"
+							value="#{scheduleBean.getSessions(day)}" var="lecture"
+							dynamic="true">
+							
+							<p:commandLink action="#{navigationBean.showSession(lecture.id)}">
+								<p:panel styleClass="SessionPanel #{scheduleBean.getStyleClass(lecture.parent, lecture.getSchedule(day.id).target)}">
+									<div class="Container30 Responsive30 Time">
+										<h:outputText value="#{lecture.getSchedule(day.id).time}" />
+									</div>
+									<div class="Container60 Responsive60 Session">
+										<h:outputText value="#{lecture.title}" class="FS16 FontBold" />
+										<br />
+										<h:outputText styleClass="Fs12"
+											value="Room #{lecture.getSchedule(day.id).room}"
+											rendered="#{lecture.getSchedule(day.id).room != null}" />
+										<h:outputText styleClass="Fs12"
+											value=" - #{lecture.getSchedule(day.id).target}"
+											rendered="#{lecture.getSchedule(day.id).target != null}" />
+									</div>
+									
+										<!-- 									<h:outputText styleClass="Fs12"  value="Exec Host: " -->
+										<!-- 										rendered="#{lecture.exec!=null}" /> -->
+										<!-- 									<h:outputText class="Fs12 FontBold" rendered="#{lecture.exec!=null}" value="#{lecture.exec}&lt;br/&gt;" escape="false" /> -->
+										<!-- 									<h:outputText styleClass="Fs12"  value="Presenter: " -->
+										<!-- 										rendered="#{lecture.presenter!=null}" /> -->
+										<!-- 									<h:outputText class="Fs12 FontBold" rendered="#{lecture.presenter!=null}" value="#{lecture.presenter}&lt;br/&gt;" escape="false" /> -->
+										<!-- 									<h:outputText styleClass="Fs12"  rendered="#{lecture.description!=null}" value="#{lecture.description}&lt;br/&gt;" escape="false" /> -->
+										<div class="EmptyBox5" style="height: 1px;"></div>									
+									
+									
+								<!-- 
+								<p:panel style="border:none;" rendered="#{lecture.channel}">
+									<p:accordionPanel styleClass="Schedule" activeIndex="#{sessionBean.sessionsInChannelActiveIndex}"
+										id="channellectureDrillDownTabs"
+										value="#{scheduleBean.getSessionsForChannel(lecture.parent)}"
+										var="channellecture" dynamic="true">
+										<p:tab titleStyleClass="">
+											<f:facet name="title">
+												<div class="EmptyBox5"></div>
+												<div class="Container30 Responsive40 Time">
+													<h:outputText value="#{channellecture.startTime}" />
+												</div>
+												<div class="Container60 Responsive40 Session">
+													<h:outputText value="#{channellecture.title}" class="FS16 FontBold" />
+												</div>
+												<div class="EmptyBox5"></div>
+											</f:facet>
+											<p:panel style="border:none;">
+												<h:outputText value="Content Owner: " rendered="#{channellecture.owner!=null}" />
+												<h:outputText class="FontBold" value="#{channellecture.owner}" />
+												<div class="EmptyBox5"></div>
+												<h:outputText value="Presenter: " rendered="#{channellecture.presenter!=null}" />
+												<h:outputText class="FontBold" value="#{channellecture.presenter}" />
+												<div class="EmptyBox5"></div>
+												<h:outputText value="#{channellecture.description}" />
+												<div class="EmptyBox5"></div>
+												<p:commandButton value="Explore"
+													styleClass="RaisedButton Rounded Fright"
+													action="#{navigationBean.showSession(channellecture.id)}" />
+												<div class="EmptyBox5"></div>
+											</p:panel>
+										</p:tab>
+									</p:accordionPanel>
+								</p:panel>
+								-->
+
+								</p:panel>
+							</p:commandLink>
+						
+						</p:dataGrid>
+
+					</p:tab>
+				</p:accordionPanel>
+			</div>
+
+
+
+			<div class="Container30 Responsive100">
+				<ui:insert name="announcements">
+					<ui:include src="/ui/announcements.xhtml" />
+				</ui:insert>
+			</div>
+
+			<div class="Container30 Responsive100">
+				<ui:insert name="activityFeed">
+					<ui:include src="/ui/activity.xhtml" />
+				</ui:insert>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

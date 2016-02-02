@@ -1,0 +1,39 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/rio">
+    
+	<h:form id="layoutForm">
+    <div class="Animated05" id="layout-menu-cover">
+        <ul class="layout-menu">
+        
+            <li>
+                <a class="menulink ripplelink">
+                    <i class="icon-round58 Fs40"></i>
+                    <span class="Fs18">#{loginForm.loggedUser}<i class="icon-downwards Fright Fs20"></i></span>
+                </a>
+                <ul>
+                    <li><p:commandLink action="#{loginForm.logout}" styleClass="menulink ripplelink"><i class="icon-thermostat1 Fs16"></i> Logout</p:commandLink></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="Separator"></div>
+        
+        <pr:menu>
+            <p:menuitem id="rm_dashboard" value="Dashboard" icon="icon-planet29" outcome="/ui/dashboard"/>
+            <p:separator />
+        
+            <p:menuitem id="rm_forms" value="Announcements" icon="icon-browser" rendered="#{loginForm.validateAdmin()}" outcome="/ui/announcementsMgr" />
+            <p:menuitem id="rm_data" value="Schedule" icon="icon-calendar" rendered="#{loginForm.validateAdmin()}"  outcome="/ui/scheduleManager" />
+<!--             <p:menuitem id="rm_datatable" value="DataTable" icon="icon-grid-alt" outcome="/ui/dashboard" /> -->
+<!--             <p:menuitem id="rm_panels" value="Panels" icon="icon-screen47 Fs16" outcome="/ui/dashboard" /> -->
+        
+        </pr:menu>
+
+    </div>
+	
+    </h:form>
+</ui:composition>

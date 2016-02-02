@@ -1,0 +1,365 @@
+.borderlessGrid {
+	border: none;
+}
+
+.borderlessGrid.ui-panelgrid>tbody>tr, .borderlessGrid.ui-panelgrid>tbody>tr>td {
+    border: none !important;
+}
+
+.Card {
+	border-radius: 10px;
+}
+
+
+.ui-accordion {
+	border-radius: 10px;
+	margin: 5px!important;
+}
+.ui-accordion .ui-accordion-header {
+	border-radius: 10px;
+}
+
+.ui-panel .ui-panel-titlebar {
+	border-top-left-radius: 10px!important;
+    border-top-right-radius: 10px!important;
+    background-color:#e0e0e0;
+    color: #546E7A;
+}
+.ui-panel .ui-panel-footer {
+	border-bottom-right-radius: 10px!important;
+    border-bottom-left-radius: 10px!important;
+}
+.ui-panel {
+	border-radius: 10px!important;
+	background-color:transparent;
+	margin: 5px!important;
+}
+
+.ui-datascroller {
+	border: none;
+	border-radius: 10px;	
+}
+
+.Rounded {
+	border-radius: 10px!important;
+}
+
+.Day.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: bold !important;
+	background-color:transparent;
+}
+
+.Schedule.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: normal !important;
+	background-color:#e0e0e0;
+	margin: 2px!important;
+}
+.Schedule.ui-datagrid .ui-datagrid-content  {
+	padding: 0px; 
+}
+
+.Comments.ui-accordion .ui-accordion-header {
+	color: #546E7A;
+	font-weight: bold !important;
+	background-color:transparent;	
+}
+.Comments.ui-accordion .ui-accordion-content   {
+	overflow: visible; 
+}
+
+.SessionPanel.ui-panel {
+	margin: 0px!important;
+	padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+.GraySession.ui-panel {	
+	background-color:#e0e0e0 !important;
+}
+.BlueTeam.ui-panel {
+	background-color:#499ED9 !important;
+}
+.GreenTeam.ui-panel {
+	background-color: #83C57B!important;
+}
+.RedTeam.ui-panel {
+	background-color:#F95C64 !important;
+}
+.BlueTeam.ui-panel .ui-panel-content, .GreenTeam.ui-panel .ui-panel-content, .RedTeam.ui-panel .ui-panel-content {
+	color: #ffffff !important;
+}
+.SessinoPanel.ui-panel .ui-panel-content {		
+	padding: 0px !important;
+}
+
+.Time {
+    position: absolute;
+    /* top: 10%; */
+    /* margin-top: -8px; */
+    /* margin-right: 5px; */
+    margin-top: 1px;
+    margin-left: 10px;
+}
+
+.SessionTimes.ui-datagrid {
+	background-color:transparent !important;
+	border: none;
+	padding-left:10px;
+}
+.SessionTimes.ui-datagrid .ui-datagrid-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.custom-footer-width .ui-panel-footer{
+	padding-left:7px!important;
+}
+
+.Session {
+	margin-left: 30%;
+}
+
+.PageTilte {
+	font-family: 'roboto_condensedregular';
+    color: #546E7A;
+	padding: 10px !important;
+}
+
+.PageText {
+	font-family: 'roboto_condensedregular';
+    color: #546E7A;
+}
+
+.ActivityFeedText {
+	color: #d39a9a;
+}
+
+.Margin10 {
+	margin: 10px!important;
+}
+.Margin5 {
+	margin: 5px!important;
+}
+
+.preformatted {
+    white-space: pre-wrap;
+}
+
+.MessagePanel.ui-panel .ui-panel-titlebar {
+	padding: 2px 20px !important;
+}
+.MessagePanel.ui-panel .ui-panel-titlebar {
+    background-color: #d39a9a;
+    color: #ffffff;
+}
+
+.logo-custom{
+	height:100%;
+}
+
+/*Overridden Primefaces Classes*/
+#layout-topbar{
+    background: #C7C7C7; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FEFEFE, #C7C7C7); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FEFEFE, #C7C7C7); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FEFEFE, #C7C7C7); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FEFEFE, #C7C7C7); /* Standard syntax */
+}
+#layout-menu-cover {
+    background-image: url("/javax.faces.resource/images/blue-background.svg.xhtml?ln=rio-layout&v=1.0");
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-color: #CDCDCD;
+    background-repeat: no-repeat;
+}
+
+/* START select box for Country*/
+.ui-selectonemenu{
+	border-style:solid!important;
+	border-width:1px!important;
+	border-color:#546E7A!important;
+	border-radius:10px!important;
+    }
+    
+.ui-selectonemenu.ui-state-focus {
+	border-color: #03A9F4!important;
+}
+    
+.ui-selectonemenu label.ui-selectonemenu-label{
+	background-color:transparent!important;
+	/* padding:7px 10px!important; */
+}
+
+.ui-selectonemenu.ui-state-focus .ui-selectonemenu-label{
+	background-color:transparent!important;
+	}
+
+.ui-selectonemenu label.ui-selectonemenu-label.ui-state-focus{
+	background-color:transparent!important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger{
+	background-color:transparent;
+	border-bottom:0px!important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger.ui-state-focus{
+	background-color:transparent;
+	border-bottom:0px!important;
+}
+
+.ui-button-text-icon-left .ui-button-text{
+	padding:7px 20px 7px 40px!important;
+}
+
+.ui-inputfield{
+	padding:7px 10px!important;
+}
+
+/* END select box for Country*/
+
+.ui-button{
+	border-radius:10px!important;
+	-webkit-border-radius: 10px!important;
+    -moz-border-radius: 10px !important;
+}
+
+.ui-widget{
+	border-radius:10px!important;
+	-webkit-border-radius: 10px!important;
+    -moz-border-radius: 10px !important;
+}
+ .ui-corner-all{
+	border-radius:10px!important;
+	-webkit-border-radius: 10px!important;
+    -moz-border-radius: 10px !important;
+}
+ .ui-button-text-icon-left{
+	border-radius:10px!important;
+	-webkit-border-radius: 10px!important;
+    -moz-border-radius: 10px !important;
+} 
+
+.RaisedButton{
+	border-radius:10px!important;
+	-webkit-border-radius: 10px!important;
+    -moz-border-radius: 10px !important;
+}
+
+.ui-button-text-only .ui-button-text{
+	padding:7px 10px!important
+}
+/* START navigate back button*/
+.ui-button-text-icon-left .ui-button-text{
+	background-color:transparent!important;
+	border-style:solid!important;
+	border-width:1px!important;
+	border-color:#546E7A!important;
+	border-radius:10px!important;
+}
+
+.ui-button-text-icon-left.ui-state-focus .ui-button-text{
+	border-color: #03A9F4!important;
+	border-radius:10px!important;
+}
+
+.custom-hollow-button .ui-button{
+	background-color:transparent!important;
+	color:#546E7A!important;
+	border-width:1px!important;
+	border-color:#546E7A!important;
+	border-radius:10px!important;
+}
+/* End navigate back button*/
+
+.ui-accordion-header .ui-icon-triangle-1-e{
+	background-image: url("/javax.faces.resource/images/right-arrow-white.svg.xhtml?ln=primefaces-adamantium&v=1.0")!important;
+}
+
+.ui-accordion-header .ui-icon-triangle-1-e{
+	background-image: url("/javax.faces.resource/images/right-arrow.svg.xhtml?ln=primefaces-adamantium&v=1.0")!important;
+}
+
+.ui-accordion-header .ui-icon-triangle-1-s{
+	background-image: url("/javax.faces.resource/images/downarrow.svg.xhtml?ln=primefaces-adamantium&v=1.0")!important;
+}
+
+
+.custom-clear-accordion .ui-accordion{
+    background: transparent!important;
+    border: 0px!important;
+}
+
+.custom-clear-accordion .ui-accordion-header{
+	margin-bottom:-10px!important;
+}
+
+.custom-clear-panel .ui-panel .ui-panel-content{
+    background: transparent!important;
+}
+
+.custom-noborder.ui-panel{
+	border:0px!important;
+	margin-top: -15px!important;
+    margin-bottom: -10px!important;
+}
+
+.custom-format-messages .ui-widget-content .ui-inputfield{
+	background-color:transparent!important;
+	color:#546E7A!important;
+	border-width:1px!important;
+	border-radius:10px!important;
+	overflow-y: auto!important;
+	margin-bottom:-10px;
+}
+
+.custom-format-messages .ui-inputfield.ui-state-hover, .custom-format-messages .ui-inputfield.ui-state-focus{
+	background-color:#FFFDDC!important;
+}
+
+ .ui-datascroller .ui-datascroller-loader{
+
+	padding-bottom:0px!important;
+}
+
+.ui-datascroller .ui-datascroller-content{
+
+	padding-bottom:0px!important;
+} 
+
+.custom-white-panel .ui-panel .ui-panel-content, .custom-white-panel .ui-panel .ui-panel-footer{
+	background-color:#fff!important;
+}
+
+#mobile-menu-button{
+background-color:#0288d1;
+}
+
+.ui-datascroller .ui-datascroller-item {
+	border: none!important;
+}
+
+.ui-panel{
+	background-color:#fff;
+}
+
+.ui-datascroller{
+	background-color:#fff;
+}
+
+.ui-panel .ui-panel-footer{
+	background-color:#fff;
+}
+
+.custom-notification{
+	font-size:10px; 
+	border:1px solid #0288D1; 
+	border-radius:5px; 
+	padding:1px 3px 0px 3px; 
+	font-weight:lighter;
+	color: #0288D1!important; 
+	vertical-align:1.5px;	
+}
+}

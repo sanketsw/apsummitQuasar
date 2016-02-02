@@ -1,0 +1,171 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/rio/template.xhtml">
+
+	<ui:define name="content">
+		
+				
+			<div class="Container70 Responsive100">
+				<div class="BackPanel TexAlRight Fright">
+					<h:form id="backForm" styleClass="custom-hollow-button">
+						<div class="EmptyBox10"></div>
+						<p:commandButton icon="fa fa-chevron-left" value="Back to Schedule" style="margin-right:5px;" action="#{navigationBean.showDashboard}" />
+						
+					</h:form>
+				</div>				
+				<h2 class="BigTopic PageTilte">Session</h2>
+				<p:panel header="#{messageBean.currentSession.title}" styleClass="ShadowEffect custom-footer-width">
+					<div class="EmptyBox5"></div>
+					<h:outputText value="Exec Host: " rendered="#{messageBean.currentSession.exec!=null}" />
+					<p:dataGrid columns="1" value="#{messageBean.getPresneters(messageBean.currentSession.exec)}" var="p"	id="execs"	styleClass="SessionTimes" rendered="#{messageBean.currentSession.exec!=null}">
+						<h:outputText id="pNameWithoutEmail" class="FontBold" style="color:#546e7a;" value="#{p.name}" rendered="#{p.email == null}"/>
+						<h:outputText id="pName" class="FontBold" style="color:#0288D1;" value="#{p.name}" rendered="#{p.email != null}"/>
+						<p:overlayPanel id="presenterPanel" for="pName" hideEffect="fade" rendered="#{p.email != null}">
+        					<a href="http://faces.tap.ibm.com/bluepages/profile.html?email=#{p.email}" style="color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Bluepages Profile</a>
+    					</p:overlayPanel>
+						<h:outputText value=" - #{p.designation}" rendered="#{p.designation != null}"/> <br/>
+						<h:outputText value="#{p.email}&lt;br/&gt;" escape="false" rendered="#{p.email != null}"/>
+					</p:dataGrid>
+					<div class="EmptyBox5"></div>
+					<h:outputText value="Presenter: " rendered="#{messageBean.currentSession.presenter!=null}" />
+					<p:dataGrid columns="1" value="#{messageBean.getPresneters(messageBean.currentSession.presenter)}" var="p"	id="presenters"	styleClass="SessionTimes" rendered="#{messageBean.currentSession.presenter!=null}">
+						<h:outputText id="pNameWithoutEmail" class="FontBold" style="color:#546e7a;" value="#{p.name}" rendered="#{p.email == null}"/>
+						<h:outputText id="pName" class="FontBold" style="color:#0288D1;" value="#{p.name}" rendered="#{p.email != null}"/>
+						<p:overlayPanel id="presenterPanel" for="pName" hideEffect="fade" rendered="#{p.email != null}">
+        					<a href="http://faces.tap.ibm.com/bluepages/profile.html?email=#{p.email}" style="color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Bluepages Profile</a>
+    					</p:overlayPanel>
+						<h:outputText value=" - #{p.designation}" rendered="#{p.designation != null}"/> <br/>
+						<h:outputText value="#{p.email}&lt;br/&gt;" escape="false" rendered="#{p.email != null}"/>
+					</p:dataGrid>
+					<h:outputText value="#{messageBean.currentSession.description} &lt;br/&gt;" escape="false" rendered="#{messageBean.currentSession.description!=null}"/>
+					<div class="EmptyBox10"></div>
+					<a href="#{messageBean.currentSession.URL}" style="font-weight:bold; color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Session presentations and media</a>					
+					<f:facet name="footer" >		
+						<div style="padding-bottom:5px;">						
+							<h:outputText value="Room: #{messageBean.currentSession.times[0].room}" rendered="#{messageBean.currentSession.times[0].room != null}"/>
+						</div>
+						<p:dataGrid columns="1" value="#{messageBean.currentSession.times}" var="t"	id="times"
+							styleClass="SessionTimes">
+							<h:outputText value="#{t.target} -" rendered="#{t.target != null}"/>
+							<h:outputText value="Day #{t.day} -  #{t.time}"/> <br/>
+						</p:dataGrid>
+					</f:facet>
+				</p:panel>
+
+
+				<div class="EmptyBox10"></div>
+				<h:form id="form" styleClass="Margin5">
+					<p:commandButton value="Ask a Question"
+						styleClass="RaisedButton Rounded" process="@form" update="messageFormDiv"
+						action="#{messageBean.askQuestion}" />
+					<p:commandButton value="Comment/Feedback"
+						styleClass="RaisedButton Rounded"
+						action="#{messageBean.postComment}" process="@form" update="messageFormDiv" />
+					<div class="EmptyBox10"></div>
+				</h:form>
+				<h:form id="messageFormDiv" styleClass="custom-format-messages custom-clear-panel custom-noborder">
+					<div style="#{messageBean.getDisplayStyle()}">
+						<p:panel styleClass="custom-noborder">
+							<div class="EmptyBox5"></div>
+							<h:outputText value="#{messageBean.messageType}"
+								for="messageInput" />
+							<div class="EmptyBox5"></div>
+							<h:inputText style="display:none;"
+								value="#{messageBean.messageType}" />
+							<h:inputText style="display:none;"
+								value="#{messageBean.entityId}" />
+							<p:inputTextarea  rows="1" styleClass="Wid70" id="messageInput" 
+								value="#{messageBean.currentMessage}"
+								placeholder="Enter your text here"></p:inputTextarea>							
+							<p:commandButton value="POST" 
+								styleClass="RaisedButton Rounded" style="margin-left:5px;"
+								action="#{messageBean.saveMessage}" process="messageFormDiv" update="questionsForm, commentsForm, messageFormDiv" />
+							
+						</p:panel>
+					</div>
+				</h:form>
+			
+				<h:form id="questionsForm" styleClass="custom-clear-accordion">
+					<p:accordionPanel styleClass="Comments" activeIndex="#{messageBean.activeIndexQuestions}" rendered="#{messageBean.questions.size()>0}">
+						<p:tab>
+							<f:facet name="title"> Questions 
+								<a class="custom-notification">
+                             		<h:outputText value="#{messageBean.questions.size()}"> </h:outputText>
+                            	</a>  
+                            </f:facet> 
+							<p:dataScroller var="m" value="#{messageBean.questions}"
+								chunkSize="10" id="questions"
+								style="border:none;border-radious:10px;">
+								<h:outputText id="userId" style="color:#0288D1;" class="ActivityFeedText" value="#{m.userId}" />
+								<p:overlayPanel id="presenterPanel" for="userId" hideEffect="fade">
+        								#{messageBean.getEmail(m.userId)}<br/><br/>
+        								<a href="http://faces.tap.ibm.com/bluepages/profile.html?email=#{messageBean.getEmail(m.userId)}" style="color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Bluepages Profile</a>
+    								</p:overlayPanel>
+								<h:outputText class="ActivityFeedText"  value=" wrote " escape="false" rendered="#{m.type != 'Question'}" />
+								<h:outputText class="ActivityFeedText" value=" asked " escape="false"  rendered="#{m.type == 'Question'}" />
+								<h:outputText class="ActivityFeedText" value=" #{m.formattedDate}" />
+								<p:commandLink styleClass="Fright" rendered="#{loginForm.validateAdmin() or loginForm.validateMyself(m.userId)}"
+									style="height:1em; width:1em; min-width:1em!important;"
+									action="#{messageBean.removeMessage(m)}" update="questionsForm, commentsForm">
+									<i class="fa fa-remove Red"></i>
+								</p:commandLink>		
+								<br/>
+								<h:outputText class="FontBold Fs18" value="#{m.message}" />																
+								<div class="EmptyBox10"></div>								
+							</p:dataScroller>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				
+				
+				<h:form id="commentsForm" styleClass="custom-clear-accordion">
+					<p:accordionPanel styleClass="Comments" activeIndex="0" rendered="#{messageBean.comments.size()>0}">
+						<p:tab>
+							<f:facet name="title"> Comments 
+								<a class="custom-notification">
+                             		<h:outputText value="#{messageBean.comments.size()}"> </h:outputText>
+                            	</a>  
+                            </f:facet> 
+							<p:dataScroller var="m" value="#{messageBean.comments}"
+								chunkSize="10" id="comments"
+								style="border:none;border-radious:10px;">
+								<h:outputText id="userId" style="color:#0288D1;" class="ActivityFeedText" value="#{m.userId}" />
+								<p:overlayPanel id="presenterPanel" for="userId" hideEffect="fade">
+        								#{messageBean.getEmail(m.userId)}<br/><br/>
+        								<a href="http://faces.tap.ibm.com/bluepages/profile.html?email=#{messageBean.getEmail(m.userId)}" style="color:#0288D1;" target="_blank"><span class="fa fa-external-link"></span> Bluepages Profile</a>
+    								</p:overlayPanel>
+								<h:outputText class="ActivityFeedText"  value=" wrote " escape="false" rendered="#{m.type != 'Question'}" />
+								<h:outputText class="ActivityFeedText" value=" asked " escape="false"  rendered="#{m.type == 'Question'}" />
+								<h:outputText class="ActivityFeedText" value=" #{m.formattedDate}" />
+								<p:commandLink styleClass="Fright" rendered="#{loginForm.validateAdmin() or loginForm.validateMyself(m.userId)}"
+									style="height:1em; width:1em; min-width:1em!important;"
+									action="#{messageBean.removeMessage(m)}" update="questionsForm, commentsForm">
+									<i class="fa fa-remove Red"></i>
+								</p:commandLink>		
+								<br/>
+								<h:outputText class="FontBold Fs18" value="#{m.message}" />																
+								<div class="EmptyBox10"></div>
+							</p:dataScroller>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+				<div class="EmptyBox10"></div>
+				<h:form id="backToScheduleButton" styleClass="custom-hollow-button">
+					<p:commandButton icon="fa fa-chevron-left" value="Back to Schedule" styleClass="Fright " style="margin-right:5px;" action="#{navigationBean.showDashboard}" />
+				</h:form>
+				<div class="EmptyBox10"></div>
+			</div>
+
+			<div class="Container30 Responsive100">
+				<ui:insert name="announcements">
+					<ui:include src="/ui/announcements.xhtml" />
+				</ui:insert>
+			</div>
+		
+	</ui:define>
+
+
+</ui:composition>

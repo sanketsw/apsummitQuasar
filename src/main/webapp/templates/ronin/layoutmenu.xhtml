@@ -1,0 +1,31 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/ronin">
+
+    <div class="Animated05" id="layout-menu-cover">
+        <ui:include src="topbar.xhtml" />
+
+		<h:form>
+        <pr:menu>
+        	<p:menuitem id="rm_dashboard" value="Dashboard" icon="fa fa-dashboard" ajax="true" action="#{navigationBean.dashboard}" update="mainContent,form"/>
+        	<p:menuitem id="rm_trainingevent" value="Training Event" icon="fa fa-slideshare" action="#{trainingEventForm.viewNewOne}" ajax="true"  update="mainContent,form"/>
+        	<p:menuitem id="rm_appuser" value="Application User" icon="fa fa-user" action="#{appUserForm.viewNewOne}" ajax="true"  update="mainContent,form"/>
+        	<!-- 
+            <p:menuitem id="rm_dashboard" value="Dashboard" icon="fa fa-joomla"/>
+            <p:submenu id="rm_theme" label="Ronin Theme" icon="fa fa-trophy">
+                <p:submenu id="rm_forms" label="Forms" icon="fa fa-folder">
+                    <p:menuitem id="rm_forms_default" value="Default" icon="fa fa-file-text-o"/>
+                    <p:menuitem id="rm_forms_lesscurve" value="Less Curve" icon="fa fa-file-text-o"/>
+                </p:submenu>
+            </p:submenu>
+            -->
+        </pr:menu>
+        </h:form>
+		
+    </div>
+
+</ui:composition>

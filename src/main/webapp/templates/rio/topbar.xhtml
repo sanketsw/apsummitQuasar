@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<div id="layout-topbar">
+		<div id="logo" class="Fleft"
+			style="display: table-cell; vertical-align: middle;">
+			<i class="fa fa-skyatlas Fs40 WhiteBlue"
+				style="padding-left: 5px; padding-right: 5px; margin-top: 10px" />
+			<span class="FontRobotoRegular WhiteBlue"
+				style="font-stretch: wider; font-size: medium;">Cloud Dev
+				&amp; Integration</span> <a id="mobile-menu-button"
+				class="Fright ShowOnMobile ripplelink Unselectable ShadowEffect"><i
+				class="icon-add186"></i></a>
+		</div>
+
+		<h:form>
+			<div class="Fleft"
+				style="padding-left: 30px; padding-right: 5px; margin-top: 15px">
+				<p:commandLink styleClass="ripplelink WhiteBlue"
+					action="#{opportunityForm.goBack}" ajax="true"
+					update="mainContent,form,growl">
+					<i class="fa fa-chevron-left Fs20 WhiteBlue" style="vertical-align:middle;"></i>
+					<h:outputText value=" Back" styleClass="ShowOnDesktop Fs18 WhiteBlue" style="vertical-align:middle;"></h:outputText>
+				</p:commandLink>
+			</div>
+		</h:form>
+		<a class="ripplelink WhiteBlue Fright ShowOnMobile" id="show-top-menu"><i
+			class="icon-show8"></i></a>
+
+		<ul id="top-menu" class="ShowOnDesktop">
+			<li><a class="ripplelink"><i class="icon-search100"></i> <span
+					class="Txt">Search</span></a>
+				<ul>
+					<li><input type="text" placeholder="Search" /></li>
+				</ul></li>
+			<li><a class="ripplelink"><i class="icon-set6"></i> <span
+					class="Txt">Tasks</span></a>
+				<ul>
+					<li><a href="#">23 New Tasks</a></li>
+				</ul></li>
+			<li><a class="ripplelink"><i class="icon-notifications1"></i>
+					<span class="Txt">Alerts</span></a>
+				<ul>
+					<li><a href="#">18 Alerts</a></li>
+				</ul></li>
+			<li><a href="#" class="ripplelink"><i class="icon-wifi83"></i>
+					<span class="Txt">System Settings</span></a></li>
+		</ul>
+	</div>
+
+</ui:composition>
